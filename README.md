@@ -1,4 +1,4 @@
-# CRC64-ECMA182.js
+# carsonxu/crc64.js
 
 Pure JavaScript implement of CRC64-ECMA182 for Node.js.
 
