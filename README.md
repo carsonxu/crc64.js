@@ -2,7 +2,7 @@
 
 Pure JavaScript implement of CRC64-ECMA182 for Node.js.
 
-> This package can be used as verify [Ali-OSS](https://help.aliyun.com/document_detail/43394.html) file.
+> This package can be used as verify [Tencent COS](https://cloud.tencent.com/document/product/436/11366) and [Ali-OSS](https://help.aliyun.com/document_detail/43394.html) file.
 
 ## Usage
 
