@@ -39,7 +39,7 @@ function uint64PtrToStr(uint64Ptr) {
 
 function buffToPtr(buff) {
     if(typeof buff === 'string') {
-        buff = new Buffer(buff);
+        buff = Buffer.from(buff);
     } else if(!Buffer.isBuffer(buff)) {
         throw new Error('Invalid buffer type.');
     }
@@ -68,9 +68,19 @@ module.exports.crc64 = function(buff, prev) {
     return ret;
 };
 
-module.exports.crc64File = function(filename, callback) {
+module.exports.crc64File = function(opt, callback) {
+    let readOpt;
+    let filePath;
+    if (typeof opt === 'string') filePath = opt;
+    else {
+        readOpt = {
+            start: opt.start,
+            end: opt.end,
+        };
+        filePath = opt.filePath;
+    }
     let errored = false;
-    const stream = fs.createReadStream(filename);
+    const stream = fs.createReadStream(filePath, readOpt);
     const crcPtr = strToUint64Ptr('0');
     let crcPtrFreed = false;
     stream.on('error', function(err) {
